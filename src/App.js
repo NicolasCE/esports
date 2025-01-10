@@ -1,13 +1,26 @@
-import React from 'react';
-import { googleLogin } from './firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Welcome from './components/Welcome';
+import UserProfile from './components/UserProfile';
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div>
-      <h1>Prueba de equipo de esports - By: Nikito</h1>
-      <button onClick={googleLogin}>Iniciar sesión con Google</button>
+      {!user ? <Welcome /> : <UserProfile user={user} />}
     </div>
   );
-}
+};
 
 export default App;
+

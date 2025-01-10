@@ -1,0 +1,23 @@
+.user-profile {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .user-profile img {
+    border-radius: 50%;
+    margin: 20px 0;
+  }
+  
+  .user-profile button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .user-profile button:hover {
+    background-color: #c82333;
+  }
+  
